@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         META TAGS
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Nexora AI Productivity Counter</title>
+
+    <meta name="description"
+        content="Futuristic AI-powered productivity counter dashboard with advanced DOM manipulation and premium UI effects.">
+
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- =========================================
+         FONT AWESOME
+    ========================================== -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- =========================================
+         CSS FILE
+    ========================================== -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         PREMIUM LOADER
+    ========================================== -->
+
+    <div class="loader-wrapper"
+        id="loaderWrapper">
+
+        <div class="loader">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================
+         MATRIX BACKGROUND
+    ========================================== -->
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- =========================================
+         PARTICLES
+    ========================================== -->
+
+    <div class="particles-container"
+        id="particles"></div>
+
+    <!-- =========================================
+         CURSOR GLOW
+    ========================================== -->
+
+    <div class="cursor-glow"></div>
+
+    <!-- =========================================
+         MAIN DASHBOARD
+    ========================================== -->
+
+    <main class="dashboard">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <span>Nexora AI</span>
+
+            </div>
+
+            <!-- MENU -->
+
+            <ul class="menu">
+
+                <li class="active">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Dashboard
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                    Productivity
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    Achievements
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    History
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    Settings
+
+                </li>
+
+            </ul>
+
+            <!-- AI TIPS -->
+
+            <div class="ai-tip-card">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <p id="aiTip">
+
+                    AI Tip:
+                    Stay focused and increase your productivity daily 🚀
+
+                </p>
+
+            </div>
+
+        </aside>
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <section class="main-content">
+
+            <!-- =========================================
+                 TOP NAVBAR
+            ========================================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+
+                        Productivity Dashboard
+
+                    </h1>
+
+                    <p>
+
+                        Track your focus and productivity growth
+
+                    </p>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                <div class="top-actions">
+
+                    <!-- THEME TOGGLE -->
+
+                    <button id="themeToggle">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                    </button>
+
+                    <!-- PROFILE -->
+
+                    <div class="profile">
+
+                        <img
+                            src="https://i.pravatar.cc/100"
+                            alt="profile">
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- =========================================
+                 ANALYTICS CARDS
+            ========================================== -->
+
+            <div class="stats-grid">
+
+                <!-- CARD -->
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                    <h2 id="totalClicks">
+
+                        0
+
+                    </h2>
+
+                    <p>Total Actions</p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    <h2 id="highestCount">
+
+                        0
+
+                    </h2>
+
+                    <p>Highest Score</p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-chart-simple"></i>
+
+                    <h2 id="productivityScore">
+
+                        0%
+
+                    </h2>
+
+                    <p>Productivity</p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="stat-card">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                    <h2 id="milestoneText">
+
+                        Beginner
+
+                    </h2>
+
+                    <p>Current Rank</p>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+                 COUNTER SECTION
+            ========================================== -->
+
+            <section class="counter-section">
+
+                <!-- LEFT -->
+
+                <div class="counter-card">
+
+                    <h2>
+
+                        AI Productivity Counter
+
+                    </h2>
+
+                    <!-- CIRCLE -->
+
+                    <div class="progress-wrapper">
+
+                        <svg class="progress-ring"
+                            width="260"
+                            height="260">
+
+                            <circle
+                                class="progress-bg"
+                                cx="130"
+                                cy="130"
+                                r="110">
+                            </circle>
+
+                            <circle
+                                class="progress-circle"
+                                cx="130"
+                                cy="130"
+                                r="110">
+                            </circle>
+
+                        </svg>
+
+                        <!-- COUNTER -->
+
+                        <div class="counter-display">
+
+                            <span id="counter">
+
+                                0
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROLS -->
+
+                    <div class="controls">
+
+                        <button
+                            class="btn decrement"
+                            id="decrementBtn">
+
+                            <i class="fa-solid fa-minus"></i>
+
+                        </button>
+
+                        <button
+                            class="btn increment"
+                            id="incrementBtn">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                        <button
+                            class="btn reset"
+                            id="resetBtn">
+
+                            <i class="fa-solid fa-rotate"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- KEYBOARD INFO -->
+
+                    <div class="keyboard-shortcuts">
+
+                        <p>
+
+                            ⌨️ Arrow Up → Increment
+
+                        </p>
+
+                        <p>
+
+                            ⌨️ Arrow Down → Decrement
+
+                        </p>
+
+                        <p>
+
+                            ⌨️ Press R → Reset
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT PANEL -->
+
+                <div class="history-panel">
+
+                    <h3>
+
+                        Activity Timeline
+
+                    </h3>
+
+                    <!-- HISTORY -->
+
+                    <ul id="historyList">
+
+                        <li>
+
+                            🚀 Productivity tracking started
+
+                        </li>
+
+                    </ul>
+
+                    <!-- ACHIEVEMENTS -->
+
+                    <div class="achievement-box">
+
+                        <h4>
+
+                            Milestone Rewards
+
+                        </h4>
+
+                        <div class="badges">
+
+                            <span>🎉 10</span>
+                            <span>🚀 25</span>
+                            <span>🔥 50</span>
+                            <span>👑 100</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =========================================
+                 MOTIVATION SECTION
+            ========================================== -->
+
+            <section class="motivation-section">
+
+                <div class="motivation-card">
+
+                    <i class="fa-solid fa-quote-left"></i>
+
+                    <h2 id="motivationText">
+
+                        Success starts with consistent actions.
+
+                    </h2>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         FLOATING NOTIFICATION
+    ========================================== -->
+
+    <div class="notification"
+        id="notification">
+
+        🎉 Productivity milestone achieved!
+
+    </div>
+
+    <!-- =========================================
+         AUDIO
+    ========================================== -->
+
+    <audio id="clickSound">
+
+        <source
+            src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"
+            type="audio/mp3">
+
+    </audio>
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+  </html>

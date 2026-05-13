@@ -148,6 +148,8 @@ When milestones are reached:
 
 ---
 
-# 📸 Project Screenshots
+# 📸 Project live link
+
+ https://nexora-ai-counter.vercel.app/
 
 ## 🖥 Desktop View
